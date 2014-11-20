@@ -18,3 +18,5 @@ decrypteur ID_client message_chiffré
 * Si cela ne fonctionne pas, une dernière méthode est d'utiliser `python nom_du_fichier options`
 
 * Il est inutile de réutiliser les exemples de "commandes.txt", le timestamp les invaliderait.
+
+* Il y a un exemple d'exécution normale dans Programme. Pour l'exécuter, rendez-vous dans celui-ci et tapez `./exemple_execution.sh` ou `bash exemple_execution.sh`.
