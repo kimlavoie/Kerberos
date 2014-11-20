@@ -16,3 +16,5 @@ decrypteur ID_client message_chiffré
 * Il faut que les programmes soient exécutables. Pour cela, utiliser `chmod +x nom_du_fichier`
 
 * Si cela ne fonctionne pas, une dernière méthode est d'utiliser `python nom_du_fichier options`
+
+* Il est inutile de réutiliser les exemples de "commandes.txt", le timestamp les invaliderait.
