@@ -1,0 +1,104 @@
+Séquences d'appels:
+
+i. Le serveur (V) accorde son accès lorsque la procédure est suivie avec des valeurs appropriées
+    AS:
+        Commande:   as Client1#1.2.3.4#TGS1
+        Sortie:     KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+    
+    Décrypteur:
+        Commande:   decrypteur Client1 KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+        Sortie:     SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+    
+    TGS:
+        Commande:   tgs Client1#1.2.3.4#V1#SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+        Sortie:     ISozdCswUlEoZkpSQkVKRCooW0lYQE1KVWYpcE9HQk1GUQ==
+        
+    Serveur:
+        Commande:   serveur Client1#1.2.3.4#V1#ISozdCswUlEoZkpSQkVKRCooW0lYQE1KVWYpcE9HQk1GUQ==
+        Sortie:     OK
+        
+        
+        
+        
+ii. Le TGS refuse un ticket si l’adresse du client n’est pas la même que celle fournie à l’AS
+    AS:
+        Commande:   as Client1#1.2.3.4#TGS1
+        Sortie:     KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+    
+    Décrypteur:
+        Commande:   decrypteur Client1 KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+        Sortie:     SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+    
+    TGS:
+        Commande:   tgs Client1#1.2.3.5#V1#SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+        Sortie:     Non
+        
+        
+        
+        
+iii. Le serveur (V) refuse un ticket pour les mêmes raisons
+    AS:
+        Commande:   as Client1#1.2.3.4#TGS1
+        Sortie:     KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+    
+    Décrypteur:
+        Commande:   decrypteur Client1 KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+        Sortie:     SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+    
+    TGS:
+        Commande:   tgs Client1#1.2.3.4#V1#SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+        Sortie:     ISozdCswUlEoZkpSQkVKRCooW0lYQE1KVWYpcE9HQk1GUQ==
+        
+    Serveur:
+        Commande:   serveur Client1#1.2.3.5#V1#ISozdCswUlEoZkpSQkVKRCooW0lYQE1KVWYpcE9HQk1GUQ==
+        Sortie:     Non
+        
+        
+        
+        
+iv. Le TGS et le serveur (V) refusent un ticket après son expiration
+    AS:
+        Commande:   as Client1#1.2.3.4#TGS1
+        Sortie:     KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+    
+    Décrypteur:
+        Commande:   decrypteur Client1 KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+        Sortie:     SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+    
+    TGS:
+        Commande:   tgs Client1#1.2.3.4#V1#SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+        Sortie:     ISozdCswUlEoZkpSQkVKRCooW0lYQE1KVWYpcE9HQk1GUQ==
+        
+    #Une fois le ticket expiré
+    
+    TGS:
+        Commande:   tgs Client1#1.2.3.4#V1#SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+        Sortie:     Non
+        
+    Serveur:
+        Commande:   serveur Client1#1.2.3.4#V1#ISozdCswUlEoZkpSQkVKRCooW0lYQE1KVWYpcE9HQk1GUQ==
+        Sortie:     Non
+    
+    
+    
+    
+v. On ne peut modifier un ticket chiffré sans que le TGS ou le serveur ne le refusent
+    AS:
+        Commande:   as Client1#1.2.3.4#TGS1
+        Sortie:     KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+    
+    Décrypteur:
+        Commande:   decrypteur Client1 KGxbOjNiIjAvbl9gYUIqbVJGZkRUVFAmcTNgMEpeWz5zclxC
+        Sortie:     SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+    
+    TGS:
+        Commande:   tgs Client1#1.2.3.4#V1#SnREJi4pSDk4NmdJTT1LOVtPLkw9QEtHPTxpUlJHRzk6PmVL
+        Sortie:     ISozdCswUlEoZkpSQkVKRCooW0lYQE1KVWYpcE9HQk1GUQ==
+        
+    TGS:
+        Commande:   tgs Client1#1.2.3.4#V1#000000000000000000000000000000000000000000000000
+        Sortie:     Non
+        
+    Serveur:
+        Commande:   serveur Client1#1.2.3.4#V1#0000000000000000000000000000011111110000000000
+        Sortie:     Non
