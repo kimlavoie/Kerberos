@@ -1,4 +1,6 @@
 #-*- coding: utf-8 -*-
+
+# This function encrypt a message, using the scheme in specs
 def Encryption(key, message):
     longueur = int(len(message) / len(key)) + 1
     key_modifie = key * longueur
@@ -11,6 +13,7 @@ def Encryption(key, message):
         
     return encodage
 
+# This function decrypt a message, using the scheme in specs
 def Decryption(key, encrypte):
     longueur = int(len(encrypte) / len(key)) + 1
     key_modifie = key * longueur
@@ -23,6 +26,7 @@ def Decryption(key, encrypte):
         
     return message
     
+# Create a dictionary from "cles.txt". Yes, it's hardcoded!
 def DicoFromFile():
     file_content = ""
     dico = {}
